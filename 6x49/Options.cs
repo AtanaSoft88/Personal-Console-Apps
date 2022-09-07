@@ -33,7 +33,20 @@ namespace _6x49
 
                 }
                 int rowIncrMax = rowIncr + 1;
-                Console.WriteLine(string.Join(",", numbers));
+                List<string> numbersCopyAsString = new List<string>();
+                for (int j = 0; j < numbers.Count; j++)
+                {
+                    if (numbers[j]< 10)
+                    {
+                        numbersCopyAsString.Add($"0{numbers[j]}");
+                    }
+                    else
+                    {
+                        numbersCopyAsString.Add(numbers[j].ToString());
+                    }
+                }
+                Console.WriteLine(string.Join(",", numbersCopyAsString));                
+
                 for (int row = rowIncr; row < rowIncrMax; row++)
                 {
                     List<int> input = numbers;
@@ -44,17 +57,17 @@ namespace _6x49
                 }
                 rowIncr++;
                 numbers.Clear();
-
+                numbersCopyAsString.Clear();
             }
 
             return matrix6x6;
         }
         public static void MatrixInfoExtractor(Random rnd, int[,] matrix6x6)
         {
-            HashSet<int> firstDiagonal = new HashSet<int>();
-            HashSet<int> secondDiagonal = new HashSet<int>();
-            HashSet<int> firstColumn = new HashSet<int>();
-            HashSet<int> lastColumn = new HashSet<int>();
+            List<int> firstDiagonal = new List<int>();
+            List<int> secondDiagonal = new List<int>();
+            List<int> firstColumn = new List<int>();
+            List<int> lastColumn = new List<int>();
             int secondDiagonalIndex = 5;
             for (int row = 0; row < 6; row++)
             {
@@ -81,19 +94,19 @@ namespace _6x49
 
                 }
             }
-            //while (firstDiagonal.Count != 6 || secondDiagonal.Count != 6)
-            //{
-            //    if (secondDiagonal.Count < 6)
-            //    {
-            //        Console.WriteLine($"Added a nmber");
-            //        secondDiagonal.Add(firstColumn.ToArray()[firstColumn.Count-1]);
-            //    }
-            //    if (firstDiagonal.Count < 6)
-            //    {                    
-            //        Console.WriteLine($"Added a nmber");
-            //        firstDiagonal.Add(lastColumn.ToArray()[lastColumn.Count - 1]);
-            //    }
-            //}
+            while (firstDiagonal.Count != 6 || secondDiagonal.Count != 6)
+            {
+                if (secondDiagonal.Count < 6)
+                {
+                    Console.WriteLine($"Added a nmber");
+                    secondDiagonal.Add(firstColumn.ToArray()[firstColumn.Count - 1]);
+                }
+                if (firstDiagonal.Count < 6)
+                {
+                    Console.WriteLine($"Added a nmber");
+                    firstDiagonal.Add(lastColumn.ToArray()[lastColumn.Count - 1]);
+                }
+            }
             List<int> suqare = new List<int>()
             {   firstDiagonal.First(),
                 secondDiagonal.First(),
