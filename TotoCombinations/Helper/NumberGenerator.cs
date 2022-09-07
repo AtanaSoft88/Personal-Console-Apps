@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
-namespace TotoCombinations.NumGenerator
+namespace TotoProject.Helper
 {
     public class NumberGenerator
     {
@@ -30,6 +31,14 @@ namespace TotoCombinations.NumGenerator
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void TotoNumberRecorder(string luckyNumbers)
+        {
+            string outputPath = @"..\..\..\LuckyNumbers.txt";
+            using FileStream fileStrm = File.Open(outputPath, FileMode.Append); // will append to end of file
+            using StreamWriter writer = new StreamWriter(fileStrm);
+            writer.WriteLine($"{luckyNumbers} - Date: {DateTime.Now}");
         }
     }
 }

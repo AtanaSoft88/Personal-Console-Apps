@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TotoCombinations.UI
+namespace TotoProject.UI
 {
     public class UserTotoProfile
     {
-        public void UICreator(out int upperLimitNumber, out int luckyNum)
+        public List<int> UICreator()
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("Моля изберете предпочитание за ТОТО [6x49] или [5x35]");
-
-            upperLimitNumber = 0;
-            luckyNum = 0;
-            Console.WriteLine("Моля, въведете число 5 ( за тото 5х35) или 6 (за тото 6х49)");
+            Console.WriteLine(GlobalConstants.PreferredTotoType);            
+            int upperLimitNumber=0;
+            int lowerLimitNumber=0;            
             int TotoPrefference = 0;
             while (true)
             {
@@ -25,27 +23,55 @@ namespace TotoCombinations.UI
                     {
                         break;
                     }
-                    Console.WriteLine("Моля, въведете число 5 ( за тото 5х35) или 6 (за тото 6х49)");
+                    Console.WriteLine(GlobalConstants.PreferredTotoType);
                 }
                 else
                 {
-                    Console.WriteLine("Моля въведете число , а не Текст  >:(  !!!");
+                    Console.WriteLine(GlobalConstants.EnterNumberPlease);
                 }
             }
 
             if (TotoPrefference == 5)
             {
                 upperLimitNumber = 36;
-                luckyNum = 5;
+                lowerLimitNumber = 5;
 
             }
             else if (TotoPrefference == 6)
             {
                 upperLimitNumber = 50;
-                luckyNum = 6;
-            }
+                lowerLimitNumber = 6;
+            }            
+            return new List<int>() { upperLimitNumber, lowerLimitNumber };
+        }                
+        public void TotoResultViewer(int luckyNum, int totalIterationsPass, List<int> finalResult)
+        {
+            var dt = DateTime.Now.ToString("d");
+            Console.ResetColor();
+            Console.WriteLine("\r\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine(GlobalConstants.FinalReportInfo, luckyNum, luckyNum, luckyNum, totalIterationsPass);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-           -=-=-=-=-=-=-=-=-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("-=-=-=-=-=-=-=-=-       T O T O        -=-=-=-=-=-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"-=-=-=-=-=-=-           {dt}              -=-=-=-=-=-=-");
+            Console.WriteLine("-=-=-=-=-                                       -=-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"-=-=-=-  ----===  {string.Join("||",finalResult)}  ===---- =-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("-=-=-=-=-                                       -=-=-=-=-");          
+            Console.WriteLine("-=-=-=-=-=-=-                               -=-=-=-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-                   -=-=-=-=-=-=-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-           -=-=-=-=-=-=-=-=-=-=-=-");
+            Console.WriteLine();            
         }
 
-        
+
     }
 }
