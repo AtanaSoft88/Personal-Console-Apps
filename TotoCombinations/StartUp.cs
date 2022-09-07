@@ -11,9 +11,9 @@ namespace TotoProject
         static void Main(string[] args)
         {
             UserTotoProfile totoProfile = new UserTotoProfile();
-            List<int> totoBounderies = totoProfile.UICreator();
-            int chosenTotoUpperBound = totoBounderies[0];
-            int chosenTotoLowerBound = totoBounderies[1];
+            List<int> totoBoundaries = totoProfile.UICreator();
+            int chosenTotoUpperBound = totoBoundaries[0];
+            int chosenTotoLowerBound = totoBoundaries[1];
             HashSet<string> rowNumberSet = new HashSet<string>();
             HashSet<string> rowNumberSetCopy = new HashSet<string>();
             Random rnd = new Random();

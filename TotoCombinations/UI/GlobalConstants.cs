@@ -4,7 +4,7 @@
     {       
         public static string Matrix10x100 = "That is how matrix 10x100 looks like :)\r\n";
 
-        public static string NeedARecord = "\r\nDo you want to make a record of the most luckies numbers in the World?!";
+        public static string NeedARecord = "\r\nDo you want to make a record?!";
 
         public static string Answer = "Press:\"y\" for YES to proceed with the record, otherwise - no record will be made!";
 
